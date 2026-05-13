@@ -13,7 +13,8 @@
     --accent: #2563eb;
     --red: #e63946;
     --dark: #1e293b;
-    --nav-height: 75px; 
+    /* Height of the navbar + extra margin for mobile system buttons */
+    --nav-total-space: 90px; 
 }
 
 *{
@@ -46,10 +47,9 @@ body{
     flex-direction:column;
 }
 
-/* HEADER - Safe Area Aware */
+/* HEADER */
 .header{
     height:60px;
-    min-height: 60px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -58,7 +58,7 @@ body{
     background:rgba(255,255,255,0.8);
     backdrop-filter:blur(15px);
     border-bottom:1px solid rgba(59,130,246,0.1);
-    z-index:10;
+    z-index:100;
 }
 .logo{ display:flex; align-items:center; gap:8px; }
 .logo img{ width:30px; height:30px; border-radius:8px; }
@@ -93,8 +93,8 @@ body{
     pointer-events:none;
     transform:translateY(10px);
     overflow-y:auto;
-    /* Buffer to prevent navbar overlap */
-    padding-bottom: 120px; 
+    /* CRITICAL: Extra padding so content scrolls high enough to see over navbar */
+    padding-bottom: 150px; 
 }
 
 .screen.active{
@@ -103,7 +103,7 @@ body{
     transform:translateY(0);
 }
 
-/* HOME GRID - All Data Preserved */
+/* HOME GRID - All Data Points Intact */
 .home-layout{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -115,7 +115,6 @@ body{
     border-radius:20px;
     padding:20px;
     color:white;
-    margin-bottom: 5px;
 }
 .hero-card h1{ font-size:22px; font-weight:800; }
 .hero-card p{ font-size:11px; opacity:0.9; }
@@ -139,7 +138,7 @@ body{
     gap:12px;
 }
 
-/* USP & PROCESS CARDS */
+/* CARDS - USP / PROCESS */
 .usp-card, .process-box {
     background: white;
     border-radius: 18px;
@@ -159,7 +158,7 @@ body{
     font-weight: 700; font-size: 13px;
 }
 
-/* ASSURANCES - 1 to 5 + Footer preserved */
+/* ASSURANCES */
 .assurance-card {
     background: white;
     padding: 12px;
@@ -171,30 +170,31 @@ body{
 .assurance-card span { font-weight: 700; color: #1e293b; font-size: 12px; }
 .assurance-card p { font-size: 10px; color:#64748b; }
 
-/* NAVBAR - Fixed Mobile UI */
+/* NAVBAR - Elevated for Mobile Visibility */
 .navbar{
-    height: var(--nav-height);
+    height: 75px;
     display:flex;
     justify-content:space-around;
     align-items: center;
-    background:rgba(255,255,255,0.95);
-    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.98);
+    backdrop-filter:blur(15px);
     border-top:1px solid rgba(59,130,246,0.1);
-    padding-bottom: env(safe-area-inset-bottom);
     position: absolute;
     bottom: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
+    /* Respect Safe Area + Extra Bottom Margin for System Buttons */
+    padding-bottom: calc(env(safe-area-inset-bottom) + 10px);
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
 }
 .nav-item{
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     font-size:10px; color:#94a3b8; flex:1; cursor:pointer;
-    transition: 0.3s;
 }
 .nav-item.active{ color:#2563eb; font-weight:700; }
 .nav-item i{ font-size:20px; margin-bottom: 4px; }
 
-/* CONTACT SECTION - All Data Points Kept */
+/* CONTACT SCREEN - Data Preserved */
 .contact-card{
     background:white;
     border-radius:20px;
@@ -204,8 +204,8 @@ body{
 }
 .btn-contact{
     display:flex; align-items:center; justify-content:center; gap:10px;
-    width:100%; padding:12px; border-radius:12px; text-decoration:none;
-    font-weight:600; font-size:12px; margin-top:10px;
+    width:100%; padding:14px; border-radius:12px; text-decoration:none;
+    font-weight:600; font-size:13px; margin-top:10px;
 }
 </style>
 </head>
@@ -214,6 +214,7 @@ body{
 
 <div class="app">
 
+    <!-- Header -->
     <div class="header">
         <div class="logo">
             <img src="logo.png" alt="Logo">
@@ -222,6 +223,7 @@ body{
         <button class="header-contact-btn" onclick="goTo(5)">Contact</button>
     </div>
 
+    <!-- Main Screens -->
     <div class="screen-container">
 
         <!-- HOME -->
@@ -233,7 +235,7 @@ body{
                     <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:5px;">
                         <span style="font-size:9px; background:rgba(255,255,255,0.2); padding:3px 8px; border-radius:20px;">Est. 20+ Years</span>
                         <span style="font-size:9px; background:rgba(255,255,255,0.2); padding:3px 8px; border-radius:20px;">Google Partner</span>
-                        <span style="font-size:9px; background:rgba(255,255,255,0.3); padding:3px 8px; border-radius:20px; font-weight:600;">Karnataka Tourism Partner</span>
+                        <span style="font-size:9px; background:rgba(255,255,255,0.3); padding:3px 8px; border-radius:20px; font-weight:600;">Dept. of Tourism Karnataka Partner</span>
                     </div>
                 </div>
                 <div class="bento-box"><i class="fas fa-fingerprint"></i><h4>Identity</h4><p>Unique Brand Voice</p></div>
@@ -242,7 +244,7 @@ body{
                 <div class="bento-box"><i class="fas fa-handshake"></i><h4>Trust</h4><p>Dedicated Ally</p></div>
                 <div class="bento-box achievement-box">
                     <div style="min-width:35px; height:35px; border-radius:50%; border:2px solid #2563eb; display:flex; align-items:center; justify-content:center; font-weight:800; color:#2563eb; font-size:10px;">100+</div>
-                    <div><h4 style="color:#2563eb; margin:0">Excellence</h4><p style="margin:0">AI-powered management.</p></div>
+                    <div><h4 style="color:#2563eb; margin:0">Excellence</h4><p style="margin:0">Served globally with AI-powered reputation management.</p></div>
                 </div>
             </div>
         </div>
@@ -250,46 +252,47 @@ body{
         <!-- USP -->
         <div class="screen" id="scr-1">
             <h3 style="margin-bottom:15px; color:#2563eb; font-weight:800;">Our Unique <span style="color:#0f172a">Edge</span></h3>
-            <div class="usp-card"><div class="proc-num" style="background:#fef3c7; color:#d97706;"><i class="fas fa-award"></i></div><div><h4>20+ Years Experience</h4><p>Deep roots in Tourism.</p></div></div>
-            <div class="usp-card"><div class="proc-num" style="background:#dcfce7; color:#16a34a;"><i class="fas fa-bolt"></i></div><div><h4>10+ Years DRM</h4><p>Reputation specialists.</p></div></div>
-            <div class="usp-card"><div class="proc-num" style="background:#dbeafe; color:#2563eb;"><i class="fas fa-shield-alt"></i></div><div><h4>Ethical & Transparent</h4><p>No hidden agendas.</p></div></div>
-            <div class="usp-card"><div class="proc-num" style="background:#f1f5f9; color:#334155;"><i class="fas fa-hotel"></i></div><div><h4>Resort Specialists</h4><p>Hospitality marketing.</p></div></div>
+            <div class="usp-card"><div class="proc-num" style="background:#fef3c7; color:#d97706;"><i class="fas fa-award"></i></div><div><h4>20+ Years Experience</h4><p>Deep roots in the Tourism sector.</p></div></div>
+            <div class="usp-card"><div class="proc-num" style="background:#dcfce7; color:#16a34a;"><i class="fas fa-bolt"></i></div><div><h4>10+ Years DRM</h4><p>Reputation management specialists.</p></div></div>
+            <div class="usp-card"><div class="proc-num" style="background:#dbeafe; color:#2563eb;"><i class="fas fa-shield-alt"></i></div><div><h4>Ethical & Transparent</h4><p>No hidden agendas, just results.</p></div></div>
+            <div class="usp-card"><div class="proc-num" style="background:#f1f5f9; color:#334155;"><i class="fas fa-hotel"></i></div><div><h4>Resort Specialists</h4><p>Expertise in hospitality marketing.</p></div></div>
         </div>
 
         <!-- PROCESS -->
         <div class="screen" id="scr-2">
             <h3 style="margin-bottom:15px; color:#2563eb; font-weight:800;">Strategic <span style="color:#0f172a">Process</span></h3>
-            <div class="process-box"><div class="proc-num">1</div><div><h4>Strategy & Planning</h4><p>Defining goals & audience mapping.</p></div></div>
+            <div class="process-box"><div class="proc-num">1</div><div><h4>Strategy & Planning</h4><p>Defining goals and audience mapping.</p></div></div>
             <div class="process-box"><div class="proc-num">2</div><div><h4>Visual Capturing</h4><p>Pro photography & video shoots.</p></div></div>
-            <div class="process-box"><div class="proc-num">3</div><div><h4>Creative Content</h4><p>Storytelling through design.</p></div></div>
-            <div class="process-box"><div class="proc-num">4</div><div><h4>Targeted Marketing</h4><p>Social Media & OTAs.</p></div></div>
+            <div class="process-box"><div class="proc-num">3</div><div><h4>Creative Content</h4><p>Storytelling through design & copy.</p></div></div>
+            <div class="process-box"><div class="proc-num">4</div><div><h4>Targeted Marketing</h4><p>Execution across Social Media & OTAs.</p></div></div>
         </div>
 
-        <!-- ASSURANCE -->
+        <!-- ASSURANCES -->
         <div class="screen" id="scr-3">
-            <h3 style="margin-bottom:15px; color:#2563eb; font-weight:800;">Our  <span style="color:#0f172a">Assurances</span></h3>
-            <div class="assurance-card"><span>1. Maximized Direct Bookings</span><p>Direct revenue growth.</p></div>
-            <div class="assurance-card"><span>2. SEO-Optimized Content</span><p>Rank higher on Google.</p></div>
-            <div class="assurance-card"><span>3. Social Media Mastery</span><p>Engage and convert.</p></div>
-            <div class="assurance-card"><span>4. All-in-One Digital Suite</span><p>Integrated digital ecosystem.</p></div>
-            <div class="assurance-card"><span>5. Data-Driven Growth</span><p>Actionable revenue insights.</p></div>
-            <p style="text-align:center; font-size:10px; color:#94a3b8; margin-top:5px;">& 5 more premium guarantees...</p>
+            <h3 style="margin-bottom:15px; color:#2563eb; font-weight:800;">Our 10 <span style="color:#0f172a">Assurances</span></h3>
+            <div class="assurance-card"><span>1. Maximized Direct Bookings</span><p>Drive revenue straight to your bottom line.</p></div>
+            <div class="assurance-card"><span>2. SEO-Optimized Content</span><p>Rank higher on Google search results.</p></div>
+            <div class="assurance-card"><span>3. Social Media Mastery</span><p>Engage and convert with digital strategies.</p></div>
+            <div class="assurance-card"><span>4. All-in-One Digital Suite</span><p>Web, social, SEO, and ads integrated.</p></div>
+            <div class="assurance-card"><span>5. Data-Driven Growth</span><p>Actionable insights for revenue increase.</p></div>
+            <p style="text-align:center; font-size:10px; color:#94a3b8; margin-top:10px;">& 5 more premium guarantees...</p>
         </div>
 
         <!-- CONTACT -->
         <div class="screen" id="scr-5">
             <div class="contact-card">
-                <h4 style="color:#2563eb; font-weight:800; margin-bottom:15px;">THANK YOU</h4>
-                <p style="font-size:11px; margin-bottom:5px;">‘Shrichandra’. Marathikoppa road. Sirsi-581402</p>
-                <p style="font-size:13px; font-weight:700; margin-bottom:12px;">Suhas - 9448331531</p>
+                <h4 style="color:#2563eb; font-weight:800; margin-bottom:15px;">GET IN TOUCH</h4>
+                <p style="font-size:11px; margin-bottom:5px;">‘Shrichandra’. Marathikoppa main road. Sirsi-581402</p>
+                <p style="font-size:14px; font-weight:700; margin-bottom:15px;">Suhas - 9448331531</p>
                 <a href="https://wa.me/919448331531" class="btn-contact" style="background:#22c55e; color:white;"><i class="fab fa-whatsapp"></i> WhatsApp Suhas</a>
-                <a href="mailto:admin@trecccompany.com" class="btn-contact" style="background:#f1f5f9; color:#1e293b;"><i class="fas fa-envelope"></i> admin@trecccompany.com</a>
+                <a href="mailto:admin@trecccompany.com" class="btn-contact" style="background:#f1f5f9; color:#1e293b;"><i class="fas fa-envelope"></i> Email Us</a>
                 <a href="https://www.trecccompany.com" target="_blank" class="btn-contact" style="background:#1e293b; color:white;"><i class="fas fa-globe"></i> Visit Website</a>
             </div>
         </div>
 
     </div>
 
+    <!-- Navbar - Fixed at Bottom with Safe Area Margin -->
     <div class="navbar">
         <div class="nav-item active" onclick="goTo(0)"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" onclick="goTo(1)"><i class="fas fa-star"></i><span>USP</span></div>
@@ -304,15 +307,18 @@ body{
 function goTo(index){
     const screens = document.querySelectorAll('.screen');
     const navItems = document.querySelectorAll('.nav-item');
+    
     screens.forEach(s => {
         s.classList.remove('active');
         s.scrollTo(0,0);
     });
+    
     navItems.forEach(n => n.classList.remove('active'));
 
     const targetScreen = document.getElementById('scr-' + index);
     if(targetScreen) targetScreen.classList.add('active');
     
+    // Only highlight internal nav items (not the external demo or the separate contact btn)
     if(index < 4) navItems[index].classList.add('active');
 }
 </script>
