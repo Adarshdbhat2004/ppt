@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trecc Company | Showcase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --red: #ff3b5c; 
+            --glass: rgba(0, 0, 0, 0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body { 
+            background: #000; 
+            overflow: hidden; 
+            color: #fff;
+            touch-action: none; 
+        }
+
+        #container {
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            height: 100vh;
+        }
+
+        section {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: #000;
+        }
+
+        /* Full Screen Media Styling */
+        .full-media-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        video, .case-study-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Video stays full screen */
+        }
+
+        /* Specifically for Case Study Images to be large but readable */
+        .case-study-img {
+            object-fit: contain; /* Ensures the whole chart/data is visible */
+            width: 95%;
+            height: 80%;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+        }
+
+        /* Social Media Overlay UI */
+        .overlay-ui {
+            position: absolute;
+            bottom: 50px;
+            left: 20px;
+            right: 20px;
+            z-index: 2;
+            text-align: left;
+            pointer-events: none;
+        }
+
+        .overlay-ui h2, .overlay-ui h3 {
+            font-size: 1.4rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
+            margin-bottom: 10px;
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+
+        .media-link-btn {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            gap: 10px;
+            background: var(--red);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            pointer-events: auto;
+            box-shadow: 0 4px 15px rgba(255, 59, 92, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Top Progress Bar */
+        .page-indicator {
+            position: fixed;
+            top: 15px;
+            width: 90%;
+            left: 5%;
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            z-index: 100;
+        }
+
+        .bar {
+            height: 3px;
+            flex: 1;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+        }
+
+        .bar.active { background: #fff; }
+
+        /* Final Slide Special Card */
+        .contact-card {
+            z-index: 2;
+            background: var(--glass);
+            padding: 40px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            text-align: center;
+            width: 85%;
+        }
+
+        .thanks-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 12px 0;
+            color: #fff;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-indicator" id="progress-bars"></div>
+
+    <div id="container">
+        
+        <!-- VIDEO: WEBSITE -->
+        <section>
+            <div class="full-media-container">
+                <video autoplay muted loop playsinline><source src="website.mp4" type="video/mp4"></video>
+            </div>
+            <div class="overlay-ui">
+                <h2>Ibbani Jungle Resort</h2>
+                <a href="https://www.ibbanijungleresort.com/" class="media-link-btn">
+                    <i class="fas fa-globe"></i> Visit Website
+                </a>
+            </div>
+        </section>
+
+        <!-- VIDEO: LINKEDIN -->
+        <section>
+            <div class="full-media-container">
+                <video autoplay muted loop playsinline><source src="linkdin.mp4" type="video/mp4"></video>
+            </div>
+            <div class="overlay-ui">
+                <h2>Arthigamya Spa</h2>
+                <a href="https://www.linkedin.com/in/arthigamya-spa-and-resort-9481912a6" class="media-link-btn" style="background: #0077b5;">
+                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
+        </section>
+
+        <!-- VIDEO: YOUTUBE -->
+        <section>
+            <div class="full-media-container">
+                <video autoplay muted loop playsinline><source src="youtube.mp4" type="video/mp4"></video>
+            </div>
+            <div class="overlay-ui">
+                <h2>Aashrayam Resorts</h2>
+                <a href="https://youtube.com/@aashrayamhotelsandresorts" class="media-link-btn" style="background: #ff0000;">
+                    <i class="fab fa-youtube"></i> YouTube Channel
+                </a>
+            </div>
+        </section>
+
+        <!-- VIDEO: INSTAGRAM -->
+        <section>
+            <div class="full-media-container">
+                <video autoplay muted loop playsinline><source src="insta.mp4" type="video/mp4"></video>
+            </div>
+            <div class="overlay-ui">
+                <h2>Nalluri Garden</h2>
+                <a href="https://www.instagram.com/nallurigardenresort" class="media-link-btn" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">
+                    <i class="fab fa-instagram"></i> Instagram Profile
+                </a>
+            </div>
+        </section>
+
+        <!-- CASE STUDY: SEO (LARGE IMAGE) -->
+        <section>
+            <div class="full-media-container">
+                <img src="1.png" class="case-study-img" alt="SEO Analysis">
+            </div>
+            <div class="overlay-ui">
+                <h3 style="color:var(--red)">SEO Case Study</h3>
+                <p style="text-shadow: 1px 1px 5px #000;">Ibbani Jungle Resort Performance</p>
+            </div>
+        </section>
+
+        <!-- CASE STUDY: GMB (LARGE IMAGE) -->
+        <section>
+            <div class="full-media-container">
+                <img src="2.png" class="case-study-img" alt="GMB Stats">
+            </div>
+            <div class="overlay-ui">
+                <h3 style="color:var(--red)">GMB Call Growth</h3>
+                <a href="https://www.google.com/search?q=aashrayam+hotels+and+resorts" class="media-link-btn">
+                    <i class="fas fa-map-marker-alt"></i> View Google Maps
+                </a>
+            </div>
+        </section>
+
+        <!-- CASE STUDY: INSTAGRAM (LARGE IMAGE) -->
+        <section>
+            <div class="full-media-container">
+                <img src="3.png" class="case-study-img" alt="Instagram Insights">
+            </div>
+            <div class="overlay-ui">
+                <h3 style="color:var(--red)">Instagram Insights</h3>
+                <p style="text-shadow: 1px 1px 5px #000;">Arthigamya Spa & Resort</p>
+            </div>
+        </section>
+
+        <!-- PRICING (LARGE IMAGE) -->
+        <section>
+            <div class="full-media-container">
+                <img src="6.png" class="case-study-img" alt="Pricing Sheet">
+            </div>
+            <div class="overlay-ui">
+                <h3>DRM Pricing Details</h3>
+            </div>
+        </section>
+
+        <!-- CONTACT SLIDE -->
+        <section>
+            <div class="contact-card">
+                <h1 style="color: var(--red); font-size: 2.5rem;">THANK YOU</h1>
+                <p style="margin: 10px 0 30px; opacity: 0.8;">Trecc Company | Suhas - 9448331531</p>
+                
+                <a href="https://wa.me/919448331531" class="thanks-btn" style="background:#25D366; color:#fff;">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="mailto:admin@trecccompany.com" class="thanks-btn">
+                    <i class="fas fa-envelope"></i> admin@trecccompany.com
+                </a>
+                <a href="https://www.trecccompany.com" class="thanks-btn">
+                    <i class="fas fa-globe"></i> Visit Website
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let currentSection = 0;
+        const sections = document.querySelectorAll('section');
+        const totalSections = sections.length;
+        const container = document.getElementById('container');
+        const progressBars = document.getElementById('progress-bars');
+
+        // Create Bars
+        for(let i=0; i<totalSections; i++) {
+            const bar = document.createElement('div');
+            bar.className = i === 0 ? 'bar active' : 'bar';
+            progressBars.appendChild(bar);
+        }
+        const bars = document.querySelectorAll('.bar');
+
+        function updateUI() {
+            container.style.transform = `translateY(-${currentSection * 100}vh)`;
+            bars.forEach((bar, idx) => {
+                bar.classList.toggle('active', idx === currentSection);
+                // Highlight previous bars too (Story style)
+                if(idx < currentSection) bar.style.background = "#fff";
+                else if (idx > currentSection) bar.style.background = "rgba(255,255,255,0.2)";
+            });
+            
+            sections.forEach((sec, idx) => {
+                const vid = sec.querySelector('video');
+                if(vid) {
+                    if(idx === currentSection) vid.play();
+                    else vid.pause();
+                }
+            });
+        }
+
+        // Desktop Scroll
+        let lastTime = 0;
+        window.addEventListener('wheel', (e) => {
+            const now = new Date().getTime();
+            if (now - lastTime < 800) return;
+            lastTime = now;
+            if (e.deltaY > 0 && currentSection < totalSections - 1) currentSection++;
+            else if (e.deltaY < 0 && currentSection > 0) currentSection--;
+            updateUI();
+        }, { passive: true });
+
+        // Mobile Swipe
+        let startY;
+        window.addEventListener('touchstart', e => startY = e.touches[0].pageY, {passive: true});
+        window.addEventListener('touchend', e => {
+            let endY = e.changedTouches[0].pageY;
+            let diff = startY - endY;
+            if(Math.abs(diff) > 50) {
+                if(diff > 0 && currentSection < totalSections - 1) currentSection++;
+                else if(diff < 0 && currentSection > 0) currentSection--;
+                updateUI();
+            }
+        }, {passive: true});
+    </script>
+</body>
+</html>
